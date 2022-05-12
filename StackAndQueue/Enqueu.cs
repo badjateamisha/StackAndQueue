@@ -9,14 +9,14 @@ namespace StackAndQueue
     class Enqueu
     {
         QNode front, rear;
-        int Count = 0;
+        public int Count = 0;
         public Enqueu()
         {
             this.front = this.rear = null;
         }
         public void enqueue(int key)
         {
-
+            Count++;
             QNode temp = new QNode(key);
 
             if (this.rear == null)
@@ -27,8 +27,26 @@ namespace StackAndQueue
 
             this.rear.next = temp;
             this.rear = temp;
-            Count++;
+
         }
+
+        public void dequeue()
+        {
+            if (this.front == null)
+
+                return;
+
+
+            QNode temp = this.front;
+            this.front = this.front.next;
+
+            if (this.front == null)
+
+                this.rear = null;
+            Count--;
+
+        }
+
 
         public void Display()
         {
@@ -48,14 +66,6 @@ namespace StackAndQueue
             }
 
         }
-        /* public void dequeue()
-         {
-             if (this.front == null)
-                 return;
-             QNode temp = this.front;
-             this.front = this.front.next;
-             if (this.front == null)
-                 this.rear = null;
-         }*/
+
     }
 }
